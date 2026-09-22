@@ -4,13 +4,19 @@
 
 Run **Vault Doctor: Scan vault** from the command palette. Review broken internal links, missing attachments, orphan attachment candidates, and malformed frontmatter. Source-path buttons open existing files. Missing targets are never opened or created.
 
-**v0.1.0 is an early beta for manual installation.** It is not listed in the Obsidian community directory and does not claim official Obsidian approval. Review findings before acting on them, especially orphan candidates. See [RELEASE_AUDIT.md](RELEASE_AUDIT.md) for validation evidence and outstanding release checks.
+**v0.1.0 is an early desktop beta for manual installation.** It is not listed in the Obsidian community directory and does not claim official Obsidian approval. Review findings before acting on them, especially orphan candidates. [RELEASE_AUDIT.md](RELEASE_AUDIT.md) records the pre-release engineering review; the published release assets have since been independently smoke-tested.
+
+## Beta testing
+
+I'm looking for the first five desktop testers. Try a scan and share false positives, suspected missed problems, confusing results, or performance issues—even a useful scan with no problems is worth reporting. Include your Obsidian version, OS, approximate vault size, scan duration, and finding counts in [beta feedback](https://github.com/coady-rangel/vault-doctor/issues/new?template=01-beta-feedback.md); use the separate [bug report](https://github.com/coady-rangel/vault-doctor/issues/new?template=02-bug-report.md) for a specific failure.
+
+Issues are public: **never upload private notes or sensitive vault contents**. Redact paths and screenshots, and use invented examples. Orphan findings are candidates, not proof that files are unused. This beta focuses on desktop; mobile remains unverified.
 
 ## Manual beta installation
 
 Requires **Obsidian 1.13.7 or later**. Start with a disposable vault or a copy of your vault. Mobile behavior has not been verified.
 
-1. Obtain matching `main.js`, `manifest.json`, and `styles.css` for v0.1.0. When a GitHub beta release is available, use its attached plugin files; GitHub's automatic source ZIP does not contain `main.js`. Until then, build from source using the development instructions below.
+1. Download `main.js`, `manifest.json`, and `styles.css` from the [v0.1.0 release assets](https://github.com/coady-rangel/vault-doctor/releases/tag/v0.1.0). GitHub's automatic source ZIP does not contain `main.js`. You can also build from source using the development instructions below.
 2. Close Obsidian, then create `<vault>/<configuration-directory>/plugins/vault-doctor/`. Use your vault's actual configuration directory (normally `.obsidian`, but it can be customized).
 3. Copy the three plugin files into that folder. Do not copy `node_modules`, tests, or the source repository into your vault. Retain the supplied license notices when redistributing the files.
 4. Reopen Obsidian. In **Settings → Community plugins**, enable community plugins if needed, then enable **Vault Doctor**.
@@ -88,7 +94,7 @@ Excluded notes are not read; excluded attachments are not checked or reported. E
 - The scan is not atomic. Concurrent file edits/moves or an unsettled metadata cache can affect results; wait and rerun. Unsaved editor buffers are not scanned.
 - Reads are sequential and parsing runs on the UI thread, yielding every 100 notes. Very large individual notes, huge numbers of scan errors, or pathological inputs may still stall the UI. No worker or background scanning.
 - File buttons navigate to existing files, not an exact line. Preview support varies by file type/platform.
-- Desktop smoke tests have been performed in Obsidian 1.13.7, including a later report-UX review. The resulting report cleanup has automated coverage but still needs a final real-app visual check. Mobile, pop-out-window, and clipboard fallback coverage is not yet confirmed. The manifest allows mobile loading, but mobile behavior remains unverified.
+- Desktop smoke tests have been performed in Obsidian 1.13.7, and the published v0.1.0 package has been independently smoke-tested from downloaded release assets. This does not establish coverage for every vault or platform. Mobile, pop-out-window, and clipboard fallback coverage is not yet confirmed. The manifest allows mobile loading, but mobile behavior remains unverified.
 
 ## Development and validation
 
