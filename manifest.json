@@ -1,0 +1,9 @@
+{
+  "id": "vault-doctor",
+  "name": "Vault Doctor",
+  "version": "0.1.0",
+  "minAppVersion": "1.13.7",
+  "description": "Scan for broken links, missing and orphan attachments, and malformed frontmatter without changing files.",
+  "author": "Coady Rangel",
+  "isDesktopOnly": false
+}

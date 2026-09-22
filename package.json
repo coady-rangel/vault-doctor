@@ -1,0 +1,27 @@
+{
+  "name": "vault-doctor",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Coady Rangel",
+  "private": true,
+  "description": "A local, read-only health check for your Obsidian vault",
+  "type": "module",
+  "scripts": {
+    "dev": "node esbuild.config.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "build": "npm run typecheck && node esbuild.config.mjs",
+    "test": "node scripts/test.mjs",
+    "benchmark": "node scripts/benchmark.mjs"
+  },
+  "dependencies": {
+    "markdown-it": "^14.1.0",
+    "yaml": "^2.8.1"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^22.15.0",
+    "esbuild": "^0.25.5",
+    "obsidian": "^1.8.7",
+    "typescript": "~5.8.3"
+  }
+}

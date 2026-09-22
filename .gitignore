@@ -1,0 +1,28 @@
+# Dependencies and generated outputs
+node_modules/
+/main.js
+/main.js.map
+/.test-build/
+/coverage/
+/dist/
+/release/
+*.tsbuildinfo
+*.tgz
+
+# Local tooling, disposable vaults, and editor/OS files
+/.agents/
+/.codex/
+/.idea/
+/.vscode/
+/test-vault/
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Local credentials, environment, and logs
+.npmrc
+.npm/
+*.log
+.env
+.env.*
